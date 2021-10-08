@@ -7,9 +7,8 @@
     <h1 class="border-bottom">Register</h1>
     <div class="d-flex justify-content-center ">
         <div class="row g-3">
-            <form
-                    action="/users/register"
-                    method="POST" th:object="${userRegisterBindingModel}">
+            <form th:action="@{/users/register}"
+                    th:method="POST" th:object="${userRegisterBindingModel}">
                 <div>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>

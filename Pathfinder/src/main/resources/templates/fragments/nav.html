@@ -1,30 +1,34 @@
-<th:block>
+<th:block xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <nav class="main-nav">
         <ul>
+            <th:block th:if="${@currentUser.id == null}">
             <li>
                 <a href="/">Home</a>
             </li>
             <li>
-                <a href="/">Login</a>
+                <a href="/users/login">Login</a>
             </li>
             <li>
                 <a href="/users/register">Register</a>
             </li>
             <li>
-                <a href="/">About</a>
+                <a href="/about">About</a>
+            </li>
+            </th:block>
+            <th:block th:unless="${@currentUser.id == null}">
+            <li>
+                <a href="/routes/add">Add new route</a>
             </li>
             <li>
-                <a href="/">Add new route</a>
-            </li>
-            <li>
-                <a href="/">Profile</a>
+                <a th:href="@{/users/profile/{id}(id = ${@currentUser.id})}">Profile</a>
             </li>
             <li>
                 <a href="/">Admin</a>
             </li>
             <li>
-                <a href="/">Logout</a>
+                <a href="/users/logout">Logout</a>
             </li>
+            </th:block>
         </ul>
     </nav>
 </th:block>

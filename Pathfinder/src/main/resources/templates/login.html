@@ -5,18 +5,18 @@
 <main class="p-5 align-content-center bg-blur my-register-div">
     <h1 class="    border-bottom mb-5">Login</h1>
     <div class="d-flex justify-content-center">
-
         <div class="row g-3 align-items-center">
-
-            <form
-                    action="/"
-                    method="">
+            <form   th:object="${userLoginBindingModel}"
+                    th:action="@{/users/login}"
+                    th:method="POST">
                 <div>
+                    <h5 th:if="${isExists}" class="bg-danger">Incorrect Username or Password </h5>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
                         <input type="text"
+                               th:field="*{username}"
                                name="username"
                                required minlength="4" maxlength="20"
                                id="inputUsername"
@@ -30,6 +30,7 @@
                     </div>
                     <div class="col-auto">
                         <input type="password"
+                               th:field="*{password}"
                                name="password"
                                required minlength="4" maxlength="20"
                                id="inputPassword" class="form-control"
