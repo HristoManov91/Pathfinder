@@ -1,14 +1,15 @@
-package com.example.pathfinder.model.entity;
+package com.example.pathfinder.model.service;
 
+import com.example.pathfinder.model.entity.CategoryEntity;
+import com.example.pathfinder.model.entity.PictureEntity;
+import com.example.pathfinder.model.entity.UserEntity;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 
-import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-@Table(name = "routes")
-public class RouteEntity extends BaseEntity{
+public class RouteServiceModel {
 
+    private Long id;
     private String gpxCoordinates;
     private LevelEnum level;
     private String name;
@@ -18,86 +19,87 @@ public class RouteEntity extends BaseEntity{
     private Set<PictureEntity> pictures;
     private Set<CategoryEntity> categories;
 
-    public RouteEntity() {
+    public RouteServiceModel() {
     }
 
-    @Column(name = "gpx_coordinates" , columnDefinition = "LONGTEXT")
+    public Long getId() {
+        return id;
+    }
+
+    public RouteServiceModel setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public String getGpxCoordinates() {
         return gpxCoordinates;
     }
 
-    public RouteEntity setGpxCoordinates(String gpxCoordinates) {
+    public RouteServiceModel setGpxCoordinates(String gpxCoordinates) {
         this.gpxCoordinates = gpxCoordinates;
         return this;
     }
 
-    @Enumerated(EnumType.STRING)
     public LevelEnum getLevel() {
         return level;
     }
 
-    public RouteEntity setLevel(LevelEnum level) {
+    public RouteServiceModel setLevel(LevelEnum level) {
         this.level = level;
         return this;
     }
 
-    @Column
     public String getName() {
         return name;
     }
 
-    public RouteEntity setName(String name) {
+    public RouteServiceModel setName(String name) {
         this.name = name;
         return this;
     }
 
-    @ManyToOne
     public UserEntity getAuthor() {
         return author;
     }
 
-    public RouteEntity setAuthor(UserEntity author) {
+    public RouteServiceModel setAuthor(UserEntity author) {
         this.author = author;
         return this;
     }
 
-    @Column(name = "video_url")
     public String getVideoUrl() {
         return videoUrl;
     }
 
-    public RouteEntity setVideoUrl(String videoUrl) {
+    public RouteServiceModel setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
         return this;
     }
 
-    @Column(columnDefinition = "TEXT")
     public String getDescription() {
         return description;
     }
 
-    public RouteEntity setDescription(String description) {
+    public RouteServiceModel setDescription(String description) {
         this.description = description;
         return this;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    public Set<CategoryEntity> getCategories() {
-        return categories;
-    }
-
-    public RouteEntity setCategories(Set<CategoryEntity> categories) {
-        this.categories = categories;
-        return this;
-    }
-
-    @OneToMany(mappedBy = "route" , fetch = FetchType.EAGER)
     public Set<PictureEntity> getPictures() {
         return pictures;
     }
 
-    public RouteEntity setPictures(Set<PictureEntity> pictures) {
+    public RouteServiceModel setPictures(Set<PictureEntity> pictures) {
         this.pictures = pictures;
+        return this;
+    }
+
+    public Set<CategoryEntity> getCategories() {
+        return categories;
+    }
+
+    public RouteServiceModel setCategories(Set<CategoryEntity> categories) {
+        this.categories = categories;
         return this;
     }
 }
