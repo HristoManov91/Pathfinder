@@ -15,4 +15,6 @@ public interface UserService {
     UserServiceModel findUserById(Long id);
 
     boolean isUsernameExists(String username);
+
+    UserEntity findCurrentLoginUserEntity();
 }

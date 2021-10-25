@@ -45,7 +45,7 @@ public class UserController {
             redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
             redirectAttributes
                     .addFlashAttribute
-                            ("org.springframework.validation.BindingResult.userRegisterBindingModel",
+                            ("org.springframework.validation.BindingResult.userLoginBindingModel",
                             bindingResult);
 
             return "redirect:login";
